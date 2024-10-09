@@ -19,13 +19,13 @@ def first_init(data):
         new = requests.get(data[0]["url"])
         data2 = new.json()
         first_pokemon = {data[0]["name"]: [data2["abilities"][0]["ability"]["name"], data2["height"], data2["weight"]]}
-        with open('Pockjson.json', 'w') as file:
+        with open('/home/ec2-user/GHRepository/Pockjson.json', 'w') as file:
             json.dump(first_pokemon, file, indent=4)
         first_value=False
 
 #open Pockjson.json for read  :
 def load_to_json():
-    with open('Pockjson.json', 'r') as json_file:
+    with open('/home/ec2-user/GHRepository/Pockjson.json', 'r') as json_file:
         imported_data = json.load(json_file)
     return imported_data
 
@@ -58,7 +58,7 @@ def main(imported_data,pokemon_list,data):
                     new_pokemon = {random_pokemon: [data2["abilities"][0]["ability"]["name"], data2["height"], data2["weight"]]}
                     # print(new_pokemon)
                     imported_data.update(new_pokemon)
-                    with open('Pockjson.json', 'w') as json1_file:
+                    with open('/home/ec2-user/GHRepository/Pockjson.json', 'w') as json1_file:
                         json.dump(imported_data, json1_file, indent=4)
             else:
                 if draw=="n":
